@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agictest
+spec:
+  selector:
+    matchLabels:
+      app: agictest
+  replicas: Repnumber
+  template:
+    metadata:
+      labels:
+        app: agictest
+    spec:
+      containers:
+      - name: agictest
+        #image: Az-Container-Registry/Azure-Image:BUILD_ID
+        image: pracreg.azurecr.io/sampleapp:v1
+        ports:
+        - containerPort: 8080   
+      #imagePullSecrets:
+      #- name: myregistrykey 

@@ -1,0 +1,12 @@
+In the VM (self-hosted or jump server)
+Go to below path :
+C:\Users\pravm\USTGlobal\pyapp
+docker build . -t ustest:v1
+docker images
+docker tag ustest:v1 pracreg.azurecr.io/ustest:v1
+az acr login -n pracreg
+docker push pracreg.azurecr.io/ustest:v1
+Now change the image name in deployment.yml file as:
+pracreg.azurecr.io/ustest:v1
+kubectl apply -f deployment.yml
+kubectl get pods
